@@ -10,10 +10,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(x =>
+{
+    x.AddPolicy(name:"MyPolit", polit =>
+    {
+        polit.WithOrigins("http://localhost:5276", "https://localhost:5276").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseCors("MyPolit");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
