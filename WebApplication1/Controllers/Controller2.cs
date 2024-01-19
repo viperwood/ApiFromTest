@@ -19,8 +19,7 @@ public class Controller2 : Controller
             x.Id,
             x.Fullname,
             x.Login,
-            x.Password,
-            x.Datasave
+            x.Password
         }).ToList());
     }
 
@@ -78,7 +77,6 @@ public class Controller2 : Controller
         return Ok("Ошибка!");
     }
 
-    
     // GET Save Immage
     [HttpGet("GetSaveImmage")]
     public IActionResult GetSaveImmage(string immageName)
